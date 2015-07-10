@@ -1,0 +1,9 @@
+{
+  "browser": true,
+  "globals": {
+    "$": false,
+    "jquery": false,
+    "angular": false,
+    "Lazy": false
+  }
+}
