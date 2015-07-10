@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var csrf = require('csurf');
 var config = require('./config/config.global.js');
 
-//require('./init/database.init');
+require('./init/database.init');
 
 var app = express();
 
