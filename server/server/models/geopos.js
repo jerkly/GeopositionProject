@@ -13,6 +13,7 @@ var geoSchema = mongoose.Schema({
     created: Date,
     updated: Date
 
+
 });
 
 // create the model for users and expose it to our app
