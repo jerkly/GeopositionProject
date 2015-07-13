@@ -1,6 +1,23 @@
 <resources>
     <string name="app_name">GeoInn</string>
-
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+
+    <!-- MainActivity-->
+    <string name="started_text">Get started</string>
+    <string name="choose_group_text">Choose group</string>
+    <string name="floor_text">Floor</string>
+    <string name="map_text">Click on Map\n And find your group</string>
+
+    <string-array name="spinner_list">
+        <item>Group 1</item>
+        <item>Group 2</item>
+        <item>Group 3</item>
+        <item>Group 4</item>
+        <item>Group 5</item>
+        <item>Group 6</item>
+        <item>Group 7</item>
+    </string-array>
+    <!-- MainActivity-->
 </resources>

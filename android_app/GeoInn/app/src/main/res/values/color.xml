@@ -1,2 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <color name="red_text">#F44336</color>
+    <color name="floor_btn_background">#424242</color>
+</resources>

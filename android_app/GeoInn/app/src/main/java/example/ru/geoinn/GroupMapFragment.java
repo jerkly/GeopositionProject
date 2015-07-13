@@ -1,7 +1,8 @@
 package example.ru.geoinn;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,14 +32,21 @@ public class GroupMapFragment extends Fragment implements OnMapReadyCallback {
     public static final String GROUP_LATITUDE = "groupLat";
     public static final String GROUP_LONGITUDE = "groupLongitude";
 
-    @Nullable
+
+    @SuppressLint("InflateParams")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            mapFragment = savedInstanceState.getParcelable("map");
+        }
+        return inflater.inflate(R.layout.map_fragment, null);
+    }
 
-        mapFragment = (MapFragment) getActivity().getFragmentManager().findFragmentById(R.id.map_fragment);
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mapFragment = (MapFragment) getActivity().getFragmentManager().findFragmentById(R.id.group_map);
         mapFragment.getMapAsync(this);
-
-        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
@@ -60,5 +68,12 @@ public class GroupMapFragment extends Fragment implements OnMapReadyCallback {
         googleMap.addMarker(markerOptions.position(groupCoordinate).title(placeTitle));
         cameraUpdate = CameraUpdateFactory.newLatLngZoom(groupCoordinate, 15);
         googleMap.moveCamera(cameraUpdate);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        //todo: press back and app crush.
+        outState.putParcelable("map", (Parcelable) mapFragment);
+        super.onSaveInstanceState(outState);
     }
 }
