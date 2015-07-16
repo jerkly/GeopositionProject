@@ -72,7 +72,7 @@ public class GroupMapFragment extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        //todo: press back and app crush.
+        //todo: press back and app crush. it happens because of onActivityCreated called only one times and then
         outState.putParcelable("map", (Parcelable) mapFragment);
         super.onSaveInstanceState(outState);
     }
