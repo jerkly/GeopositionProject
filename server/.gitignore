@@ -10,3 +10,4 @@ vendor/bower_components
 data
 projectFilesBackup
 *.local.js
+.migrate
