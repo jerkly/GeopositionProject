@@ -10,6 +10,14 @@ exports.up = function(next) {
 
     macs.push(new MacPos({mac: '5067AE6A67E0', place: '107'}));
     macs.push(new MacPos({mac: '5067AE6A6660', place: '107'}));
+    macs.push(new MacPos({mac: 'BC671C594D90', place: '107'}));
+    macs.push(new MacPos({mac: '00082F4AA100', place: '107'}));
+    macs.push(new MacPos({mac: '00082F4A9180', place: '107'}));
+    macs.push(new MacPos({mac: '6CFA89AD3E30', place: '107'}));
+    macs.push(new MacPos({mac: 'BC671CE532D0', place: '107'}));
+    macs.push(new MacPos({mac: 'BC671CE8FE90', place: '107'}));
+
+
 
     macs.push(new MacPos({mac: '5067AE6A699F', place: '108'}));
     macs.push(new MacPos({mac: '5067AE6A699F', place: '108'}));
