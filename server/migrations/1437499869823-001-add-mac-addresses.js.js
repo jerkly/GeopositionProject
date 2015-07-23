@@ -29,9 +29,14 @@ exports.up = function(next) {
     macs.push(new MacPos({mac: '00082f4a5610', place: 'Library floor 2'}));
 
     macs.push(new MacPos({mac: '6CFA89AD3C3D', place: 'Library floor 3'}));
+    macs.push(new MacPos({mac: '6cfa89ad3eff', place: 'Library floor 3'}));
+    macs.push(new MacPos({mac: '6cfa89ad3efd', place: 'Library floor 3'}));
     macs.push(new MacPos({mac: '6CFA89AD3C7F', place: 'Library floor 3'}));
     macs.push(new MacPos({mac: '00082f32a99d', place: 'Library floor 3'}));
     macs.push(new MacPos({mac: '00082f32a99f', place: 'Library floor 3'}));
+    macs.push(new MacPos({mac: '6cfa89ad3c70', place: 'Library floor 3'}));
+    macs.push(new MacPos({mac: '6cfa89ad3ef0', place: 'Library floor 3'}));
+    macs.push(new MacPos({mac: '6cfa89ad3ef2', place: 'Library floor 3'}));
 
     MacPos.create(macs, function(err, docs) {
         if (err) {
