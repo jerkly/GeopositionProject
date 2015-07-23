@@ -8,7 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -20,7 +23,14 @@ import retrofit.client.Response;
 
 public class MainActivity extends AppCompatActivity {
     private final static int PORT = 3000;
-    private final static String IP_ADDRESS = "10.241.3.176";
+    private final static String IP_ADDRESS = "10.241.2.100";
+    private RoomEntity roomEntity;
+    private TextView findLockBtn;
+    private TextView textLocation;
+    private ImageView mapImage;
+    private String strEndPoint;
+    private String sendMacAddr;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,38 +45,50 @@ public class MainActivity extends AppCompatActivity {
         groupSpinner.setAdapter(spinnerAdapter);
         groupSpinner.setPrompt("Group List");
 
+        findLockBtn = (TextView) findViewById(R.id.find_lock_btn);
 
-        TextView wifiTv = (TextView) findViewById(R.id.map_btn);
 
-        WifiManager wifiMan = (WifiManager) this.getSystemService(
-                Context.WIFI_SERVICE);
+        mapImage = (ImageView) findViewById(R.id.map_image);
+        textLocation = (TextView) findViewById(R.id.tv_location);
+
+        WifiManager wifiMan = (WifiManager) this.getSystemService(Context.WIFI_SERVICE);
         WifiInfo wifiInf = wifiMan.getConnectionInfo();
         String macAddr = wifiInf.getBSSID();
 
-        wifiTv.setText(macAddr);
+        Log.d(MainActivity.class.getSimpleName(), "Mac" + " " + macAddr);
+
+        strEndPoint = "http://" + IP_ADDRESS + ":" + PORT;
+        sendMacAddr = macAddr.replaceAll(":", "");
 
 
-        String strEndPoint = "http://" + IP_ADDRESS + ":" + PORT;
-
-        String sendMacAddr = macAddr.replaceAll(":", "");
-
-
-        RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(strEndPoint).build();
-        RequestManager hotelResponseInterface = restAdapter.create(RequestManager.class);
-
-        hotelResponseInterface.getRoom(sendMacAddr, new Callback<RespEntity>() {
+        findLockBtn.setOnClickListener(new OnClickListener() {
             @Override
-            public void success(RespEntity respEntity, Response response) {
-                Log.d(MainActivity.class.getSimpleName(), "name: " + respEntity.getName());
-                Log.d(MainActivity.class.getSimpleName(), "err: " + respEntity.getErr());
-            }
+            public void onClick(View view) {
+                RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(strEndPoint).build();
+                RequestManager hotelResponseInterface = restAdapter.create(RequestManager.class);
+                hotelResponseInterface.getRoom(sendMacAddr, new Callback<RoomEntity>() {
+                    @Override
+                    public void success(RoomEntity entity, Response response) {
+                        roomEntity = entity;
+                        Log.d(MainActivity.class.getSimpleName(), "name: " + entity.getName());
+                        Log.d(MainActivity.class.getSimpleName(), "err: " + entity.getErr());
 
-            @Override
-            public void failure(RetrofitError error) {
+                        if (roomEntity.getName().equals("") || roomEntity == null) {
+                            textLocation.setText("Sorry, we can't determine your position");
 
+                        } else {
+                            textLocation.setText(roomEntity.getName());
+                            mapImage.setImageDrawable(getResources().getDrawable(R.drawable.library_2_floor));
+                        }
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        textLocation.setText("Sorry, we can't determine your position");
+                    }
+                });
             }
         });
-
 
 //        final FragmentManager fm = getSupportFragmentManager();
 //        final Fragment[] fragment = new Fragment[1];
@@ -82,8 +104,9 @@ public class MainActivity extends AppCompatActivity {
 //                fm.beginTransaction().addToBackStack(null).replace(R.id.container, fragment[0]).commit();
 //            }
 //        });
-    }
 
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
