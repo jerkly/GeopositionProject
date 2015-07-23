@@ -4,6 +4,8 @@ module.exports.get_room = function (req, res, next) {
 
     var macAddress = req.params.mac;
 
+    //new MacPos({mac: '00082f4a643f', place: 'Library 2'}).save();
+
     MacPos.findOne({mac: macAddress})
         .exec(function (err, pos) {
             if (err) {
@@ -11,9 +13,12 @@ module.exports.get_room = function (req, res, next) {
             }
 
             if (!pos) {
-                return res.json({err: 'Not Found'});
+                return res.json({
+                    name: '',
+                    err: 'Not Found'
+                });
             }
 
-            res.json({name: pos.place}).end();
+            res.json({name: pos.place, err: ''}).end();
         });
 };

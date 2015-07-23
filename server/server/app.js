@@ -17,6 +17,7 @@ app.set('views', path.resolve(__dirname, '../public/views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
+app.use(morgan('common'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
