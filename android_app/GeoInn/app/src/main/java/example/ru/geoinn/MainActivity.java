@@ -1,18 +1,27 @@
 package example.ru.geoinn;
 
+import android.content.Context;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+
 
 public class MainActivity extends AppCompatActivity {
+    private final static int PORT = 3000;
+    private final static String IP_ADDRESS = "10.241.3.176";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,21 +36,54 @@ public class MainActivity extends AppCompatActivity {
         groupSpinner.setPrompt("Group List");
 
 
-        final FragmentManager fm = getSupportFragmentManager();
-        final Fragment[] fragment = new Fragment[1];
+        TextView wifiTv = (TextView) findViewById(R.id.map_btn);
 
-        TextView mapBtn = (TextView) findViewById(R.id.map_btn);
-        mapBtn.setOnClickListener(new View.OnClickListener() {
+        WifiManager wifiMan = (WifiManager) this.getSystemService(
+                Context.WIFI_SERVICE);
+        WifiInfo wifiInf = wifiMan.getConnectionInfo();
+        String macAddr = wifiInf.getBSSID();
+
+        wifiTv.setText(macAddr);
+
+
+        String strEndPoint = "http://" + IP_ADDRESS + ":" + PORT;
+
+        String sendMacAddr = macAddr.replaceAll(":", "");
+
+
+        RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(strEndPoint).build();
+        RequestManager hotelResponseInterface = restAdapter.create(RequestManager.class);
+
+        hotelResponseInterface.getRoom(sendMacAddr, new Callback<RespEntity>() {
             @Override
-            public void onClick(View view) {
-                fragment[0] = fm.findFragmentById(R.id.map_container);
-                if (fragment[0] == null) {
-                    fragment[0] = new GroupMapFragment();
-                }
-                fm.beginTransaction().addToBackStack(null).replace(R.id.container, fragment[0]).commit();
+            public void success(RespEntity respEntity, Response response) {
+                Log.d(MainActivity.class.getSimpleName(), "name: " + respEntity.getName());
+                Log.d(MainActivity.class.getSimpleName(), "err: " + respEntity.getErr());
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+
             }
         });
+
+
+//        final FragmentManager fm = getSupportFragmentManager();
+//        final Fragment[] fragment = new Fragment[1];
+
+//        TextView mapBtn = (TextView) findViewById(R.id.map_btn);
+//        mapBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                fragment[0] = fm.findFragmentById(R.id.map_container);
+//                if (fragment[0] == null) {
+//                    fragment[0] = new GroupMapFragment();
+//                }
+//                fm.beginTransaction().addToBackStack(null).replace(R.id.container, fragment[0]).commit();
+//            }
+//        });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
