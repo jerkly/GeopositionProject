@@ -22,6 +22,8 @@ exports.up = function(next) {
     macs.push(new MacPos({mac: '2834A229521F', place: '308'}));
     macs.push(new MacPos({mac: '5067AE6A699F', place: '308'}));
 
+    macs.push(new MacPos({mac: '00:08:2F:32:E6:40', place: 'Negotiation ¹ 3'}));
+
     macs.push(new MacPos({mac: 'BC671CE9084D', place: 'Library floor 1'}));
     macs.push(new MacPos({mac: 'BC671CE9094F', place: 'Library floor 1'}));
     macs.push(new MacPos({mac: '00082F32d38F', place: 'Library floor 1'}));
