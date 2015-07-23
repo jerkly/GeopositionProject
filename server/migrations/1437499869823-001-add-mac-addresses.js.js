@@ -14,39 +14,39 @@ exports.up = function(next) {
     macs.push(new MacPos({mac: '5067AE6A699F', place: '108'}));
     macs.push(new MacPos({mac: '5067AE6A699F', place: '108'}));
 
-    macs.push(new MacPos({mac: 'bc671ce909f0', place: '307'}));
-    macs.push(new MacPos({mac: '5067ae6a67ef', place: '307'}));
-    macs.push(new MacPos({mac: '5067ae6a67ed', place: '307'}));
+    macs.push(new MacPos({mac: 'BC671CE909F0', place: '307'}));
+    macs.push(new MacPos({mac: '5067AE6A67EF', place: '307'}));
+    macs.push(new MacPos({mac: '5067AE6A67ED', place: '307'}));
 
-    macs.push(new MacPos({mac: '2834a2295210', place: '308'}));
-    macs.push(new MacPos({mac: '2834a229521f', place: '308'}));
-    macs.push(new MacPos({mac: '5067ae6a699f', place: '308'}));
+    macs.push(new MacPos({mac: '2834A2295210', place: '308'}));
+    macs.push(new MacPos({mac: '2834A229521F', place: '308'}));
+    macs.push(new MacPos({mac: '5067AE6A699F', place: '308'}));
 
-    macs.push(new MacPos({mac: 'bc671ce9084d', place: 'Library floor 1'}));
-    macs.push(new MacPos({mac: 'bc671ce9094f', place: 'Library floor 1'}));
-    macs.push(new MacPos({mac: '00082f32d38f', place: 'Library floor 1'}));
-    macs.push(new MacPos({mac: 'bc671ce909ff', place: 'Library floor 1'}));
-    macs.push(new MacPos({mac: '00082f32d38d', place: 'Library floor 1'}));
-    macs.push(new MacPos({mac: 'bc671ce909fd', place: 'Library floor 1'}));
-    macs.push(new MacPos({mac: 'bc671ce909f0', place: 'Library floor 1'}));
-    macs.push(new MacPos({mac: 'bc671ce909f2', place: 'Library floor 1'}));
+    macs.push(new MacPos({mac: 'BC671CE9084D', place: 'Library floor 1'}));
+    macs.push(new MacPos({mac: 'BC671CE9094F', place: 'Library floor 1'}));
+    macs.push(new MacPos({mac: '00082F32d38F', place: 'Library floor 1'}));
+    macs.push(new MacPos({mac: 'BC671CE909FF', place: 'Library floor 1'}));
+    macs.push(new MacPos({mac: '00082F32d38D', place: 'Library floor 1'}));
+    macs.push(new MacPos({mac: 'BC671CE909FD', place: 'Library floor 1'}));
+    macs.push(new MacPos({mac: 'BC671CE909F0', place: 'Library floor 1'}));
+    macs.push(new MacPos({mac: 'BC671CE909F2', place: 'Library floor 1'}));
 
-    macs.push(new MacPos({mac: '00082f4a643d', place: 'Library floor 2'}));
-    macs.push(new MacPos({mac: '00082f4a643f', place: 'Library floor 2'}));
-    macs.push(new MacPos({mac: '00082f4a6432', place: 'Library floor 2'}));
-    macs.push(new MacPos({mac: 'bc671ce8f392', place: 'Library floor 2'}));
-    macs.push(new MacPos({mac: 'bc671ce8f39d', place: 'Library floor 2'}));
-    macs.push(new MacPos({mac: 'bc671ce8f39f', place: 'Library floor 2'}));
+    macs.push(new MacPos({mac: '00082F4A643D', place: 'Library floor 2'}));
+    macs.push(new MacPos({mac: '00082F4F643F', place: 'Library floor 2'}));
+    macs.push(new MacPos({mac: '00082F4A6432', place: 'Library floor 2'}));
+    macs.push(new MacPos({mac: 'BC671CE8F392', place: 'Library floor 2'}));
+    macs.push(new MacPos({mac: 'BC671CE8F39D', place: 'Library floor 2'}));
+    macs.push(new MacPos({mac: 'BC671CE8F39F', place: 'Library floor 2'}));
 
     macs.push(new MacPos({mac: '6CFA89AD3C3D', place: 'Library floor 3'}));
-    macs.push(new MacPos({mac: '6cfa89ad3eff', place: 'Library floor 3'}));
-    macs.push(new MacPos({mac: '6cfa89ad3efd', place: 'Library floor 3'}));
+    macs.push(new MacPos({mac: '6CFA89AD3EFF', place: 'Library floor 3'}));
+    macs.push(new MacPos({mac: '6CFA89AD3EFD', place: 'Library floor 3'}));
     macs.push(new MacPos({mac: '6CFA89AD3C7F', place: 'Library floor 3'}));
-    macs.push(new MacPos({mac: '00082f32a99d', place: 'Library floor 3'}));
-    macs.push(new MacPos({mac: '00082f32a99f', place: 'Library floor 3'}));
-    macs.push(new MacPos({mac: '6cfa89ad3c70', place: 'Library floor 3'}));
-    macs.push(new MacPos({mac: '6cfa89ad3ef0', place: 'Library floor 3'}));
-    macs.push(new MacPos({mac: '6cfa89ad3ef2', place: 'Library floor 3'}));
+    macs.push(new MacPos({mac: '00082f32A99D', place: 'Library floor 3'}));
+    macs.push(new MacPos({mac: '00082F32A99F', place: 'Library floor 3'}));
+    macs.push(new MacPos({mac: '6CFA89AD3C70', place: 'Library floor 3'}));
+    macs.push(new MacPos({mac: '6CFA89AD3EF0', place: 'Library floor 3'}));
+    macs.push(new MacPos({mac: '6CFA89AD3EF2', place: 'Library floor 3'}));
 
     MacPos.create(macs, function(err, docs) {
         if (err) {
