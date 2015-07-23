@@ -42,6 +42,7 @@ exports.up = function(next) {
     macs.push(new MacPos({mac: 'BC671CE8F39D', place: 'Library floor 2'}));
     macs.push(new MacPos({mac: 'BC671CE8F39F', place: 'Library floor 2'}));
     macs.push(new MacPos({mac: '00082F4A5610', place: 'Library floor 2'}));
+    macs.push(new MacPos({mac: '00082f32a990', place: 'Library floor 2'}));
 
     macs.push(new MacPos({mac: '6CFA89AD3C3D', place: 'Library floor 3'}));
     macs.push(new MacPos({mac: '6CFA89AD3EFF', place: 'Library floor 3'}));
