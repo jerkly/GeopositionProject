@@ -5,10 +5,13 @@
 
 
     <!-- MainActivity-->
-    <string name="started_text">Get started</string>
+    <string name="started_text">Innopolis Indoor Location</string>
     <string name="choose_group_text">Choose group</string>
     <string name="floor_text">Floor</string>
     <string name="map_text">Click on Map\n And find your group</string>
+
+    <string name="description_zoom_touch_close">Expanded image (touch to close)</string>
+
 
     <string-array name="spinner_list">
         <item>Group 1</item>

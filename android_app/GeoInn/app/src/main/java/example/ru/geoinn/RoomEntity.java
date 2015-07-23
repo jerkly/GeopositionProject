@@ -5,11 +5,11 @@ package example.ru.geoinn;
  * 21.07.15.
  * Inno Geoposition Service
  */
-public class RespEntity {
+public class RoomEntity {
     private String name;
     private String err;
 
-    public RespEntity(String name, String err) {
+    public RoomEntity(String name, String err) {
         this.name = name;
         this.err = err;
     }

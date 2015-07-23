@@ -10,5 +10,5 @@ import retrofit.http.Path;
 public interface RequestManager {
 
     @GET("/api/room/{mac}")
-    void getRoom(@Path("mac") String macAddress, Callback<RespEntity> callback);
+    void getRoom(@Path("mac") String macAddress, Callback<RoomEntity> callback);
 }
