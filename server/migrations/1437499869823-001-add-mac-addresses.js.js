@@ -30,7 +30,8 @@ exports.up = function(next) {
 
     macs.push(new MacPos({mac: '6CFA89AD3C3D', place: 'Library floor 3'}));
     macs.push(new MacPos({mac: '6CFA89AD3C7F', place: 'Library floor 3'}));
-    macs.push(new MacPos({mac: '6CFA89AD3C7F', place: 'Library floor 3'}));
+    macs.push(new MacPos({mac: '00082f32a99d', place: 'Library floor 3'}));
+    macs.push(new MacPos({mac: '00082f32a99f', place: 'Library floor 3'}));
 
     MacPos.create(macs, function(err, docs) {
         if (err) {
